@@ -79,7 +79,7 @@ namespace HomeTask
     [Table("PageWithText")]
     public class PageWithText:EmptyPage
     {
-        public string Text { get; set; }       
+        public string TextInPage { get; set; }       
     }
     [Table("PageWithTextAndImage")]
     public class PageWithTextAndImage : PageWithText

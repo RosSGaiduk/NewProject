@@ -5,3 +5,7 @@ C:\Users\Rostyslav\Desktop\NewProject\NewProject\HomeTask\HomeTask\bin\Debug\Hom
 C:\Users\Rostyslav\Desktop\NewProject\NewProject\HomeTask\HomeTask\obj\Debug\HomeTask.csprojResolveAssemblyReference.cache
 C:\Users\Rostyslav\Desktop\NewProject\NewProject\HomeTask\HomeTask\obj\Debug\HomeTask.exe
 C:\Users\Rostyslav\Desktop\NewProject\NewProject\HomeTask\HomeTask\obj\Debug\HomeTask.pdb
+C:\Users\Rostyslav\Desktop\NewProject\NewProject\HomeTask\HomeTask\bin\Debug\MySql.Data.dll
+C:\Users\Rostyslav\Desktop\NewProject\NewProject\HomeTask\HomeTask\bin\Debug\MySql.Data.Entity.dll
+C:\Users\Rostyslav\Desktop\NewProject\NewProject\HomeTask\HomeTask\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\Rostyslav\Desktop\NewProject\NewProject\HomeTask\HomeTask\obj\Debug\HomeTask.csproj.HomeTask.exe.config
