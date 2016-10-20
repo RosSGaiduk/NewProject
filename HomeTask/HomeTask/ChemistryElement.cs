@@ -8,142 +8,83 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HomeTask
 {
-    public abstract class ChemistryElement
+    public interface StringOfElement
     {
-        public ChemistryElement() { }
+        string getString();
+    }
 
-        public ChemistryElement(string f, string t, string d, int g, 
+    public abstract class Element:StringOfElement
+    {
+        public Element() { }
+        public Element(string f, string t, string d, int g,
             string v, int p, double aw, char or, string url)
         { }
         public int Id { get; set; }
-        public GraphicModel GraphicModel { get; set; }
+        public string Description { get; set; }
+        public string FullName { get; set; }
+        public string Formula { get; set; }
+        public string GraphicModel { get; set; }
+        public List<EmptyPage> Pages { get; set; }   
+        public virtual string getString() 
+        {
+            return "Full name: "+FullName;
+        }
     }
 
-    [Table("LujniMetals")]
-    public class LujnyiMetal : ChemistryElement
+    [Table("ChemistryElement")]
+    public class ChemistryElement : Element
     {
-        public LujnyiMetal() {}
-        public LujnyiMetal(string f, string t, string d, int g, string v, 
-            int p, double aw, char or, string url,string formula,string natural)
+        public ChemistryElement() { }
+        public ChemistryElement(string f, string t, string d, int g, string v,
+            int p, double aw, char or, string url, string formula, string natural)
         {
             FullName = f; TableTame = t; Description = d; Group = g; Valence = v; Period = p; AtomicWeight = aw;
             Orbital = or; //UrlOfImage = url;
             Formula = formula;
             NaturalName = natural;
         }
-        public string FullName { get; set; }
         public string TableTame { get; set; }
-        public string Description { get; set; }
         public int Group { get; set; }
         public string Valence { get; set; }
         public int Period { get; set; }
         public double AtomicWeight { get; set; }
         public char Orbital { get; set; }
         public string NaturalName { get; set; }
-        public string Formula { get; set; }
-    }
-
-    [Table("LujnozemelniMetals")]
-    public class LujnozemelniMetal : ChemistryElement
-    {
-
-        public LujnozemelniMetal() { }
-        public LujnozemelniMetal(string f, string t, string d, int g, string v,
-            int p, double aw, char or, string url,string natural,string formula)
+        public List<OrganicElement> OrganicElements { get; set; }
+        public override string getString()
         {
-            FullName = f; TableTame = t; Description = d; Group = g; Valence = v; Period = p; AtomicWeight = aw;
-            Orbital = or; //UrlOfImage = url;
-            Formula = formula;
-            NaturalName = natural;
+            return base.getString()+", table name: "+TableTame+", natural name: "+NaturalName;
         }
-        public string FullName { get; set; }
-        public string TableTame { get; set; }
-        public string Description { get; set; }
-        public int Group { get; set; }
-        public string Valence { get; set; }
-        public int Period { get; set; }
-        public double AtomicWeight { get; set; }
-        public char Orbital { get; set; }
-        public string NaturalName { get; set; }
-        public string Formula { get; set; }
     }
 
-    [Table("GalogyenniGazy")]
-    public class GalogyenniGazy : ChemistryElement
+    [Table("OrganicElement")]
+    public class OrganicElement:Element
     {
-        public GalogyenniGazy() { }
-        public GalogyenniGazy(string f, string t, string d, int g, string v,
-            int p, double aw, char or, string url, string natural, string formula)
+        public List<ChemistryElement> ChemistryElements { get; set; }
+        public override string getString()
         {
-            FullName = f; TableTame = t; Description = d; Group = g; Valence = v; Period = p; AtomicWeight = aw;
-            Orbital = or; //UrlOfImage = url;
-            Formula = formula;
-            NaturalName = natural;
+            string str = "";
+            for (int i = 0; i < ChemistryElements.Count; i++)
+                str += ChemistryElements[i].getString() + "\n";
+            return str;
         }
-        public string FullName { get; set; }
-        public string TableTame { get; set; }
-        public string Description { get; set; }
-        public int Group { get; set; }
-        public string Valence { get; set; }
-        public int Period { get; set; }
-        public double AtomicWeight { get; set; }
-        public char Orbital { get; set; }
-        public string NaturalName { get; set; }
-        public string Formula { get; set; }
     }
 
-    [Table("BlagorodniGazu")]
-    public class BlagorodniGazu : ChemistryElement
-    {
-
-        public BlagorodniGazu() { }
-        public BlagorodniGazu(string f, string t, string d, int g, string v,
-            int p, double aw, char or, string natural, string formula)
-        {
-            FullName = f; TableTame = t; Description = d; Group = g; Valence = v; Period = p; AtomicWeight = aw;
-            Orbital = or; //UrlOfImage = url;
-            Formula = formula;
-            NaturalName = natural;
-        }
-        public string FullName { get; set; }
-        public string TableTame { get; set; }
-        public string Description { get; set; }
-        public int Group { get; set; }
-        public string Valence { get; set; }
-        public int Period { get; set; }
-        public double AtomicWeight { get; set; }
-        public char Orbital { get; set; }
-        public string NaturalName { get; set; }
-        public string Formula { get; set; }
-    }
-
-    [Table("NotMetals")]
-    public class NotMetal : ChemistryElement
-    {
-        public NotMetal() { }
-        public NotMetal(string f,string t,string d,int g,
-            string v,int p,double aw,char or,string natural,string formula)
-        {
-            FullName = f; TableTame = t; Description = d; Group = g; Valence = v; Period = p; AtomicWeight = aw;
-            Orbital = or; Formula = formula;
-            NaturalName = natural;
-        }
-        public string FullName { get; set; }
-        public string TableTame { get; set; }
-        public string Description { get; set; }
-        public int Group { get; set; }
-        public string Valence { get; set; }
-        public int Period { get; set; }
-        public double AtomicWeight { get; set; }
-        public char Orbital { get; set; }
-        public string NaturalName { get; set; }
-        public string Formula { get; set; }
-    }
-    [Table("Picture")]
-    public class GraphicModel
+    public abstract class EmptyPage
     {
         public int Id { get; set; }
+        public int NumberOfPage { get; set; }
+        public List<Element> Elements { get; set; }
+    }
+    [Table("PageWithText")]
+    public class PageWithText:EmptyPage
+    {
+        public string Text { get; set; }       
+    }
+    [Table("PageWithTextAndImage")]
+    public class PageWithTextAndImage : PageWithText
+    {
         public string UrlOfImage { get; set; }
-        public ChemistryElement ChemistryElement { get; set; }
     }
 }
+
