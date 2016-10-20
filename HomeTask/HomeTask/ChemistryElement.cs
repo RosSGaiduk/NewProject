@@ -69,6 +69,13 @@ namespace HomeTask
             return str;
         }
     }
+    [Table("Picture")]
+    public class Picture
+    {
+        public int Id { get; set; }
+        public string UrlOfImage { get; set; }
+        public HashSet<PageWithTextAndImage> Pages { get; set; }
+    }
 
     public abstract class EmptyPage
     {
@@ -85,6 +92,7 @@ namespace HomeTask
     public class PageWithTextAndImage : PageWithText
     {
         public string UrlOfImage { get; set; }
+        public HashSet<Picture> Pictures { get; set; }
     }
 }
 
