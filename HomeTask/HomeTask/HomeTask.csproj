@@ -56,13 +56,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChemisrtyService.cs" />
-    <Compile Include="ChemistryElement.cs" />
-    <Compile Include="OrganicService.cs" />
-    <Compile Include="PageService.cs" />
+    <Compile Include="Services\ChemisrtyService.cs" />
+    <Compile Include="BaseClasses\ChemistryElement.cs" />
+    <Compile Include="Services\OrganicService.cs" />
+    <Compile Include="Services\PageService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceAbstract.cs" />
+    <Compile Include="Services\PictureService.cs" />
+    <Compile Include="Services\ServiceAbstract.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

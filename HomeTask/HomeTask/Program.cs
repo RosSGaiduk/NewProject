@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using MySql.Data.Entity;
 using HomeTask;
+using HomeTask.Services;
 
 
 namespace ConsoleApplication1
@@ -107,23 +108,34 @@ namespace ConsoleApplication1
             //    Console.Write("----------------------------------------------------\n");
             //}
 
-
-
             //pageService.close();
 
+            PictureService pictureService = new PictureService();
+            pictureService.connect();
+            pictureService.open();
+            MySqlCommand command = pictureService.getConnection().CreateCommand();
+            pictureService.setCommand(command);
 
+            //Picture picture = new Picture("Some picture url1");
+            //pictureService.add(picture);
 
-            //command.CommandText = "select * from ChemistryElement";
+            
 
-            //MySqlDataReader reader = command.ExecuteReader();
-            //int i = 0;
-            //while (reader.Read())
-            //{
-            //    Console.WriteLine(reader[0].ToString()+","+reader[1].ToString()+","+reader[2].ToString());
-            //    i++;
-            //}
+            Picture pictureFound = pictureService.findOne(1);
+            Console.WriteLine(pictureFound);
 
-            //Console.Write(i);
+            List<Picture> pictures = pictureService.findAll();
+
+            for (int i = 0; i < pictures.Count; i++)
+            {
+                Console.Write("----------------------------------------------------\n");
+                Console.WriteLine(pictures[i]);
+                Console.Write("----------------------------------------------------\n");
+            }
+
+            pictureService.delete(2);
+
+            pictureService.close();
             Console.ReadKey();
         }
     }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+
 namespace HomeTask
 {
     public interface StringOfElement
@@ -111,9 +112,26 @@ namespace HomeTask
     [Table("Picture")]
     public class Picture
     {
+        public Picture() { }
+        public Picture(string url)
+        {
+            UrlOfImage = url;
+        }
+
+        public Picture(int id,string url)
+        {
+            Id = id;
+            UrlOfImage = url;
+        }
+
         public int Id { get; set; }
         public string UrlOfImage { get; set; }
         public HashSet<PageWithTextAndImage> Pages { get; set; }
+
+        public override string ToString()
+        {
+            return "Url of image: "+UrlOfImage;
+        }
     }
 
     public abstract class EmptyPage
@@ -126,6 +144,7 @@ namespace HomeTask
     [Table("PageWithTextAndImage")]
     public class PageWithTextAndImage:EmptyPage
     {
+        public PageWithTextAndImage() { }
         public PageWithTextAndImage(int number,string text)
         {
             NumberOfPage = number; TextInPage = text;
