@@ -1,0 +1,79 @@
+use chemistry_book;
+
+
+
+create table if not exists ChemistryElement
+(
+	
+Id int primary key auto_increment,
+	
+Description longtext,
+    
+FullName varchar(50),
+    
+Formula varchar(30),
+    
+GraphicModel text,
+    
+Groupp int,
+    
+Valence varchar(10),
+   
+Period int,
+    
+AtomicWeight real,
+   
+Orbital character,
+    
+NaturalName varchar(30)
+);
+
+create table if not exists OrganicElement
+(
+	
+Id int primary key auto_increment,
+	
+Description longtext,
+   
+FullName varchar(50),
+    
+Formula varchar(30),
+    
+GraphicModel text
+);
+
+
+
+create table if not exists Picture
+(
+	
+Id int primary key auto_increment,
+	
+UrlOfImage varchar(255)
+);
+
+
+
+create table if not exists PageWithText(
+	
+Id int primary key auto_increment,
+    
+NumberOfPage int,
+    
+TextInPage text
+);
+
+
+create table if not exists PageWithTextAndImage(
+	
+Id int primary key auto_increment,
+    
+NumberOfPage int,
+    
+TextInPage text
+);
+
+
+
+
+

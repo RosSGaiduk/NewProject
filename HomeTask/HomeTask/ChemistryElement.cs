@@ -35,14 +35,30 @@ namespace HomeTask
     public class ChemistryElement : Element
     {
         public ChemistryElement() { }
+        //для запису в бд без id, бо воно auto_increment
         public ChemistryElement(string f, string t, string d, int g, string v,
-            int p, double aw, char or, string url, string formula, string natural)
+            int p, double aw, char or, string graphic, string formula, string natural)
         {
-            FullName = f; TableTame = t; Description = d; Group = g; Valence = v; Period = p; AtomicWeight = aw;
+            FullName = f; TableTame = t; Description = d; Group = g; Valence = v;
+            Period = p; AtomicWeight = aw; GraphicModel = graphic;
             Orbital = or; //UrlOfImage = url;
             Formula = formula;
             NaturalName = natural;
         }
+
+        //для отримання з бд елемента потрібна Id
+        public ChemistryElement(int id,string f, string t, string d, int g, string v,
+            int p, double aw, char or, string graphic, string formula, string natural)
+        {
+            Id = id;
+            FullName = f; TableTame = t; Description = d; Group = g; Valence = v;
+            Period = p; AtomicWeight = aw; GraphicModel = graphic;
+            Orbital = or; //UrlOfImage = url;
+            Formula = formula;
+            NaturalName = natural;
+        }
+
+
         public string TableTame { get; set; }
         public int Group { get; set; }
         public string Valence { get; set; }
@@ -53,7 +69,13 @@ namespace HomeTask
         public List<OrganicElement> OrganicElements { get; set; }
         public override string getString()
         {
-            return base.getString()+", table name: "+TableTame+", natural name: "+NaturalName;
+            return base.getString()+"\nid: "+Id+"\ntable name: "+TableTame+"\ndescription: "+Description+"\ngroup: "+Group+"\nvalence: "+Valence+"\nperiod: "
+                +Period+"\natomic weight: "+AtomicWeight+
+                "\norbital: "+Orbital+"\ngraphic model: "+GraphicModel+"\nformula: "+Formula+"\nnatural name: "+NaturalName;
+        }
+        public override string ToString()
+        {
+            return getString();
         }
     }
 

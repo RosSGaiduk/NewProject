@@ -1,0 +1,109 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
+using MySql.Data.Entity;
+using HomeTask;
+
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void insertIntoChemistryElement(ChemistryElement element,MySqlCommand command)
+        {
+            command.CommandText = "INSERT INTO ChemistryElement (Description) VALUES ('" + "hahahaha" + "')";
+        }
+
+
+        static void Main(string[] args)
+        {
+            MySqlConnection mysqlConnection = null;
+            try
+            {
+                string myConnectionString = "Database=chemistry_book;Data Source=localhost;User Id=root;Password=123456root";
+                mysqlConnection = new MySqlConnection(myConnectionString);
+                Console.WriteLine("connected");
+            }
+            catch (MySqlException e)
+            {
+                Console.Write("Error:" + e.ToString());
+            }
+
+            //
+            //command.CommandText = "Select * from pagewithtext";
+            //command.CommandText = "INSERT INTO ChemistryElement (Description) VALUES ('desc')";
+            
+            
+
+            mysqlConnection.Open();
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////Працює///////////////////////////////////////////////////
+            MySqlCommand command = mysqlConnection.CreateCommand();
+            command.CommandText = "INSERT INTO ChemistryElement (Description) VALUES (?descrip)";
+            command.Prepare();
+            command.Parameters.AddWithValue("?descrip", "description3asdsa");
+            command.ExecuteNonQuery();
+            ///////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+            //можна ще так так такоє працює
+
+            //using (MySqlConnection lconn = new MySqlConnection("Database=chemistry_book;Data Source=localhost;User Id=root;Password=123456root"))
+            //{
+            //    lconn.Open();
+            //    using (MySqlCommand cmd = new MySqlCommand())
+            //    {
+            //        cmd.Connection = lconn;
+            //        cmd.CommandText = "INSERT INTO ChemistryElement (Description) VALUES (?descrip)";
+            //        cmd.Prepare();
+            //        cmd.Parameters.AddWithValue("?descrip", "hashahdhabskdhsa");
+            //        cmd.ExecuteNonQuery();
+            //    }
+            //}
+
+
+            ChemistryElement chElem = new ChemistryElement("FullName1","TableName",
+                "Desciption1",12,"IV",5,2.0,'t',"Url1","Formula1","Natural1"        
+                );
+
+            Console.Write(chElem);
+
+            mysqlConnection.Close();
+    
+
+            //command.CommandText = "select * from ChemistryElement";
+
+            //MySqlDataReader reader = command.ExecuteReader();
+            //int i = 0;
+            //while (reader.Read())
+            //{
+            //    Console.WriteLine(reader[0].ToString()+","+reader[1].ToString()+","+reader[2].ToString());
+            //    i++;
+            //}
+
+            //Console.Write(i);
+            Console.ReadKey();
+        }
+    }
+}
