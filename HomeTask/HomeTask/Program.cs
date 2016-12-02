@@ -31,37 +31,86 @@ namespace ConsoleApplication1
         //    command.Parameters.AddWithValue("?ntral", chElem.NaturalName);
         //    command.ExecuteNonQuery();
         //}
-        
+
 
         static void Main(string[] args)
         {
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //ChemisrtyService chemistryService = new ChemisrtyService();
+            //chemistryService.connect();
 
+            //chemistryService.open();
+            //MySqlCommand command = chemistryService.getConnection().CreateCommand();
+            //chemistryService.setCommand(command);
 
+            //ChemistryElement chElem = new ChemistryElement("FullName1", "TableName",
+            //"Desciption1", 12, "IV", 5, 2.0, 't', "C:/", "Formula1", "Natural1");
 
-            ChemisrtyService chemistryService = new ChemisrtyService();
-            chemistryService.connect();
-
-            chemistryService.open();
-            MySqlCommand command = chemistryService.getConnection().CreateCommand();
-            chemistryService.setCommand(command);
-
-            ChemistryElement chElem = new ChemistryElement("FullName1", "TableName",
-               "Desciption1", 12, "IV", 5, 2.0, 't', "C:/", "Formula1", "Natural1");
-          
             //chemistryService.add(chElem);
-            //ChemistryElement chem = chemistryService.findOne(2);
+            //ChemistryElement chem = chemistryService.findOne(3);
+            //Console.Write(chem);
             //List<ChemistryElement> chemElements = chemistryService.findAll();
 
             //foreach(ChemistryElement ch in chemElements){
-                //Console.Write("----------------------------------------------------\n");
-                //Console.WriteLine(ch);
-                //Console.Write("----------------------------------------------------\n");
+            //Console.Write("----------------------------------------------------\n");
+            //Console.WriteLine(ch);
+            //Console.Write("----------------------------------------------------\n");
+            //}
+            //chemistryService.delete(2);
+            //chemistryService.close();
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+            //OrganicService organicService = new OrganicService();
+            //organicService.connect();
+            //organicService.open();
+            //MySqlCommand command = organicService.getConnection().CreateCommand();
+            //organicService.setCommand(command);
+
+            ////OrganicElement organicElement = new OrganicElement("Description1", "Full name1", "Fomula1", "Some url1");
+            ////organicService.add(organicElement);
+            //OrganicElement organicElementFound = organicService.findOne(1);
+            //Console.Write(organicElementFound);
+
+            //organicService.delete(4);
+
+            //List<OrganicElement> organicElements = organicService.findAll();
+            //for (int i = 0; i < organicElements.Count; i++)
+            //{
+            //    Console.Write("----------------------------------------------------\n");
+            //    Console.WriteLine(organicElements[i]);
+            //    Console.Write("----------------------------------------------------\n");
+            //}
+            // organicService.close();
+
+
+            //PageService pageService = new PageService();
+            //pageService.connect();
+            //pageService.open();
+            //MySqlCommand command = pageService.getConnection().CreateCommand();
+            //pageService.setCommand(command);
+
+            ////PageWithTextAndImage page = new PageWithTextAndImage(2, "Some text2");
+            ////pageService.add(page);
+
+            //PageWithTextAndImage pageFound = pageService.findOne(1);
+            //Console.WriteLine(pageFound);
+
+            //pageService.delete(2);
+
+            //List<PageWithTextAndImage> pages = pageService.findAll();
+
+            //for (int i = 0; i < pages.Count; i++)
+            //{
+            //    Console.Write("----------------------------------------------------\n");
+            //    Console.WriteLine(pages[i]);
+            //    Console.Write("----------------------------------------------------\n");
             //}
 
-            chemistryService.delete(2);
-            chemistryService.close();
-            
-            
+
+
+            //pageService.close();
+
 
 
             //command.CommandText = "select * from ChemistryElement";

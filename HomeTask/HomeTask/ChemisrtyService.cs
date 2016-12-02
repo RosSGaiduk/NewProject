@@ -8,23 +8,8 @@ using MySql.Data.Entity;
 
 namespace HomeTask
 {
-    class ChemisrtyService
+    class ChemisrtyService:ServiceAbstract
     {
-        private MySqlConnection connection;
-        private MySqlCommand command;
-        private MySqlDataReader reader = null;
-        private string myConnectionString = "Database=chemistry_book;Data Source=localhost;User Id=root;Password=123456root";
-
-        public ChemisrtyService() {
-              
-        }
-        public ChemisrtyService(MySqlConnection conn, MySqlCommand comm) { connection = conn;  command = comm; }
-        public MySqlConnection getConnection(){ return connection; }
-        public MySqlCommand getCommand() { return command; }
-        public void setConnection(MySqlConnection conn) { connection = conn; }
-        public void setCommand(MySqlCommand comm) { command = comm; }
-
-
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////MAIN QUERIES////////////////////////////////////////////////////////////////
@@ -113,22 +98,5 @@ namespace HomeTask
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-        public void connect()
-        {
-            try
-            {
-                connection = new MySqlConnection(myConnectionString);
-                Console.WriteLine("connected");
-            }
-            catch (MySqlException e)
-            {
-                Console.Write("Error:" + e.ToString());
-            }
-        }
-
-        public void open(){  connection.Open();}
-        public void close() { connection.Close(); }
     }
 }
